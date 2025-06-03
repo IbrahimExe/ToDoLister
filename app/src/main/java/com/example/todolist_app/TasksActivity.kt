@@ -1,7 +1,11 @@
 package com.example.todolist_app
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -36,7 +40,38 @@ class TasksActivity : AppCompatActivity()
 
         taskRecyclerView = findViewById(R.id.taskRecyclerView_id)
         taskRecyclerView.layoutManager = LinearLayoutManager(this)
-        taskRecyclerView.adapter = TaskAdapter()
-        
+        taskRecyclerView.adapter = TaskAdapter(group)
+
     }
+}
+
+class TaskViewHolder (rootLayout: LinearLayout) : RecyclerView.ViewHolder (rootLayout)
+{
+    val taskNameTextView = rootLayout.findViewById<TextView>(R.id.taskNameTextView_id)
+    val taskCheckBox = rootLayout.findViewById<CheckBox>(R.id.taskCheckBox_id)
+
+    fun bind(task: Task)
+    {
+        taskNameTextView.text = task.name
+        taskCheckBox.isChecked = task.isCompleted
+    }
+}
+
+class TaskAdapter (val group: Group) : RecyclerView.Adapter<TaskViewHolder>()
+{
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder
+    {
+        val rootLinearLayout = LayoutInflater.from(parent.context)
+            .inflate(R.layout.task_row, parent, false)
+                as LinearLayout
+
+        return TaskViewHolder (rootLinearLayout)
+    }
+
+    override fun onBindViewHolder(holder: TaskViewHolder, position: Int)
+    {
+        holder.bind(group.tasks[position])
+    }
+
+    override fun getItemCount(): Int = group.tasks.size
 }
