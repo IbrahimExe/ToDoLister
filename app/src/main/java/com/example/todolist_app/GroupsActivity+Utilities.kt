@@ -10,7 +10,7 @@ fun GroupsActivity.cacheOutlets ()
 {
     groupsRecyclerView = findViewById(R.id.groupsRecyclerView_id)
     groupsRecyclerView.layoutManager = LinearLayoutManager(this)
-    groupsRecyclerView.adapter = GroupsAdapter()
+    groupsRecyclerView.adapter = GroupAdapter(this)
 
     newGroupButton = findViewById(R.id.newGroupButton_id)
     newGroupButton.setOnClickListener (createNewGroup())

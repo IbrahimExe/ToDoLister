@@ -1,6 +1,7 @@
 package com.example.todolist_app
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +14,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class GroupsActivity : AppCompatActivity()
+class GroupsActivity : AppCompatActivity(), OnGroupClickedListener
 {
+    override fun onGroupClicked(group: Group)
+    {
+        val intent = Intent(this, TasksActivity::class.java)
+        startActivity(intent)
+    }
+
     lateinit var newGroupButton: Button
     lateinit var groupsRecyclerView: RecyclerView
 

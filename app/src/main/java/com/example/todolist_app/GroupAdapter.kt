@@ -1,9 +1,11 @@
 package com.example.todolist_app
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class GroupViewHolder (rootLayout: LinearLayout) : RecyclerView.ViewHolder (rootLayout)
@@ -11,13 +13,13 @@ class GroupViewHolder (rootLayout: LinearLayout) : RecyclerView.ViewHolder (root
     val groupNameTextView = rootLayout.findViewById<TextView>(R.id.groupNameTextView_id)
     val groupCountTextView = rootLayout.findViewById<TextView>(R.id.groupCountTextView_id)
 
-    fun bind (group: Group)
-    {
+    fun bind(group: Group) {
         groupNameTextView.text = group.name
         groupCountTextView.text = "${group.tasks.size} Task(s) Left!"
+    }
 }
 
-class GroupsAdapter () : RecyclerView.Adapter<GroupViewHolder>()
+class GroupAdapter (val listener: OnGroupClickedListener) : RecyclerView.Adapter<GroupViewHolder>()
 {
     override fun getItemCount(): Int = AppData.groups.size
 
@@ -35,8 +37,8 @@ class GroupsAdapter () : RecyclerView.Adapter<GroupViewHolder>()
 
         holder.itemView.setOnClickListener {
             // Do something when clicked
+            listener.onGroupClicked(thisGroup) // Sending the message
         }
     }
 
-}
 }
