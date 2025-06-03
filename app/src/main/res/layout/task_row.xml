@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif-medium"
             android:gravity="left|center_vertical"
-            android:paddingStart="10dp"
+            android:paddingStart="14dp"
             android:text="[ Task  to be Completed ]" />
 
         <CheckBox

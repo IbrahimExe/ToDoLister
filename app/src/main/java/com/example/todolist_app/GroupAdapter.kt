@@ -45,6 +45,8 @@ class GroupAdapter (val listener: OnGroupClickedListener) : RecyclerView.Adapter
             listener.onGroupLongClicked(position)
             true
         }
+
+
     }
 
 }

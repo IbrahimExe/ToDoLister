@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -27,12 +29,15 @@ class GroupsActivity : AppCompatActivity(), OnGroupClickedListener
 
     override fun onGroupLongClicked(position: Int)
     {
-        AppData.groups.removeAt(position) // Delete it from source
-        groupsRecyclerView.adapter?.notifyDataSetChanged()
+       // AppData.groups.removeAt(position) // Delete it from source
+       // groupsRecyclerView.adapter?.notifyDataSetChanged()
+
+        // Instead of that, I want to long click to edit the group's name
     }
 
     lateinit var newGroupButton: Button
     lateinit var groupsRecyclerView: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
