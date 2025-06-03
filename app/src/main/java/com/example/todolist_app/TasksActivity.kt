@@ -7,11 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class TasksActivity : AppCompatActivity()
 {
     lateinit var selectedGroupNameTextView: TextView
     lateinit var goToGroupsButton: Button
+    lateinit var taskRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,5 +34,9 @@ class TasksActivity : AppCompatActivity()
             finish()
         }
 
+        taskRecyclerView = findViewById(R.id.taskRecyclerView_id)
+        taskRecyclerView.layoutManager = LinearLayoutManager(this)
+        taskRecyclerView.adapter = TaskAdapter()
+        
     }
 }
