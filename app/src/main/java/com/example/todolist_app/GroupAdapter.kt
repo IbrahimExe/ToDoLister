@@ -37,7 +37,13 @@ class GroupAdapter (val listener: OnGroupClickedListener) : RecyclerView.Adapter
 
         holder.itemView.setOnClickListener {
             // Do something when clicked
-            listener.onGroupClicked(thisGroup) // Sending the message
+            listener.onGroupClicked(position) // Sending the message
+        }
+
+        holder.itemView.setOnLongClickListener {
+            // Do something when long clicked
+            listener.onGroupLongClicked(position)
+            true
         }
     }
 

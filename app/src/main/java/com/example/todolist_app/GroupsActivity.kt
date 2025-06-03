@@ -16,10 +16,19 @@ import androidx.recyclerview.widget.RecyclerView
 
 class GroupsActivity : AppCompatActivity(), OnGroupClickedListener
 {
-    override fun onGroupClicked(group: Group)
+    override fun onGroupClicked(position: Int)
     {
         val intent = Intent(this, TasksActivity::class.java)
+
+        intent.putExtra("Position", position)
+
         startActivity(intent)
+    }
+
+    override fun onGroupLongClicked(position: Int)
+    {
+        AppData.groups.removeAt(position) // Delete it from source
+        groupsRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     lateinit var newGroupButton: Button
