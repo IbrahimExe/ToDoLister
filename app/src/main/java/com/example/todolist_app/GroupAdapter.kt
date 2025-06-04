@@ -13,7 +13,8 @@ class GroupViewHolder (rootLayout: LinearLayout) : RecyclerView.ViewHolder (root
     val groupNameTextView = rootLayout.findViewById<TextView>(R.id.groupNameTextView_id)
     val groupCountTextView = rootLayout.findViewById<TextView>(R.id.groupCountTextView_id)
 
-    fun bind(group: Group) {
+    fun bind(group: Group)
+    {
         groupNameTextView.text = group.name
         groupCountTextView.text = "${group.tasks.size} Task(s) Left!"
     }
@@ -23,7 +24,8 @@ class GroupAdapter (val listener: OnGroupClickedListener) : RecyclerView.Adapter
 {
     override fun getItemCount(): Int = AppData.groups.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder
+    {
         val rootLinearLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.group_row, parent, false)
                 as LinearLayout
@@ -31,22 +33,24 @@ class GroupAdapter (val listener: OnGroupClickedListener) : RecyclerView.Adapter
         return GroupViewHolder(rootLinearLayout)
     }
 
-    override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GroupViewHolder, position: Int)
+    {
         val thisGroup = AppData.groups[position]
         holder.bind(thisGroup)
 
         holder.itemView.setOnClickListener {
-            // Do something when clicked
-            listener.onGroupClicked(position) // Sending the message
+            val adapterPos = holder.adapterPosition
+            if (adapterPos != RecyclerView.NO_POSITION) {
+                listener.onGroupClicked(adapterPos)
+            }
         }
 
         holder.itemView.setOnLongClickListener {
-            // Do something when long clicked
-            listener.onGroupLongClicked(position)
+            val adapterPos = holder.adapterPosition
+            if (adapterPos != RecyclerView.NO_POSITION) {
+                listener.onGroupLongClicked(adapterPos)
+            }
             true
         }
-
-
     }
-
 }

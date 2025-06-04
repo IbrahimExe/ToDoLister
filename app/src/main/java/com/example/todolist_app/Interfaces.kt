@@ -14,9 +14,4 @@ interface OnGroupClickedListener
 
     }
 
-    fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int)
-    {
-
-    }
-
 }
