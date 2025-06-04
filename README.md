@@ -54,6 +54,9 @@ Validation rules ensure group names are:
 - **Input Validation**  
   Using `TextWatcher` to show real-time warnings, plus regex checks in AlertDialogs.
 
+- **Intent Calling Through Delegation**
+  With use of `Interfaces`, we can switch to different layouts/ activities with interfaces being called somewhere else to make it work at places other than the main activity.
+
 - **AlertDialog Customization**  
   Building dialogs with embedded `EditText` and validation messages to create or rename groups.
 
@@ -69,4 +72,4 @@ Validation rules ensure group names are:
 ---
 
 
-*Feel free to fork and tweak—this was an exercise in leaning into Android fundamentals!*  
+*This is an exercise in leaning into Android, Kotlin and mobile application development fundamentals!*  
