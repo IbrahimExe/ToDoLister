@@ -4,6 +4,8 @@
 > 
 > A lightweight to-do list application. It’s designed to be modular and easy to extend. The core idea is that users can organize their tasks into groups, then tap, swipe, or long-press to perform common actions like editing and deleting.
 
+![AppDemo](https://github.com/user-attachments/assets/2590c1fd-e1b9-4364-9244-2d1ddad49424)
+
 ---
 
 ## 📘 Overview
