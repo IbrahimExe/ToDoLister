@@ -5,4 +5,5 @@ data class Task (val name: String,
 
 data class Group (
     var name: String,
-    var tasks: MutableList<Task> = mutableListOf())
+    var tasks: MutableList<Task> = mutableListOf()
+)

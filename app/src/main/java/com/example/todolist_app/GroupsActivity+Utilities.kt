@@ -50,32 +50,36 @@ fun GroupsActivity.createNewGroup(): View.OnClickListener
             val groupName = input.text.toString().trim()
 
             when {
-                groupName.isEmpty() ->
-                    {
+                groupName.isEmpty() -> {
                     Toast.makeText(this, "Group name cannot be empty!", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
-                    }
-                groupName.length > maxLength ->
-                    {
-                    Toast.makeText(this, "Group name must be under $maxLength characters!", Toast.LENGTH_SHORT).show()
+                }
+
+                groupName.length > maxLength -> {
+                    Toast.makeText(
+                        this,
+                        "Group name must be under $maxLength characters!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     return@setPositiveButton
-                    }
-                !groupName.matches(Regex("^[a-zA-Z0-9 ]+$")) ->
-                    {
-                    Toast.makeText(this, "Only letters and numbers allowed!", Toast.LENGTH_SHORT).show()
+                }
+
+                !groupName.matches(Regex("^[a-zA-Z0-9 ]+$")) -> {
+                    Toast.makeText(this, "Only letters and numbers allowed!", Toast.LENGTH_SHORT)
+                        .show()
                     return@setPositiveButton
-                    }
-                AppData.groups.any { it.name.equals(groupName, ignoreCase = true) } ->
-                    {
+                }
+
+                AppData.groups.any { it.name.equals(groupName, ignoreCase = true) } -> {
                     Toast.makeText(this, "Group name already exists!", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
-                    }
-                else ->
-                    {
+                }
+
+                else -> {
                     val newGroup = Group(groupName)
                     AppData.groups.add(newGroup)
                     groupsRecyclerView.adapter?.notifyItemInserted(AppData.groups.size - 1)
-                    }
+                }
             }
         }
 

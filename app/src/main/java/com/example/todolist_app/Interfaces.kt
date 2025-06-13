@@ -13,5 +13,17 @@ interface OnGroupClickedListener
     {
 
     }
+}
 
+interface OnTaskClickedListener
+{
+    fun onTaskClicked (position: Int)
+    {
+
+    }
+
+    fun onTaskLongClicked (position: Int)
+    {
+
+    }
 }
