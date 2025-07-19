@@ -1,4 +1,4 @@
-# Kotlin To-Do List App
+# A Basic, Yet Robust To-Do List App!
 
 > A simple practice project for learning core concepts with Kotlin and Android Studio for App Development!
 > 
